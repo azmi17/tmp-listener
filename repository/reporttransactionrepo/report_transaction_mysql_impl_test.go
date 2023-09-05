@@ -12,7 +12,7 @@ import (
 )
 
 func GetConnection() *sql.DB {
-	dataSource := "rrr"
+	dataSource := "root:uSS10nl1n3@tcp(192.169.253.56:3306)/pay_voucher?parseTime=true"
 	db, err := sql.Open("mysql", dataSource)
 	if err != nil {
 		panic(err)
