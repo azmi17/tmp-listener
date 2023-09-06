@@ -11,7 +11,6 @@ import (
 
 func ReportTransactionsListener(ctx *gin.Context) {
 	httpio := httpio.NewRequestIO(ctx)
-	httpio.Recv()
 
 	payload := entities.ReportTransactionRequest{}
 	httpio.BindUri(&payload)
