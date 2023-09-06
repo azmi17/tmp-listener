@@ -27,7 +27,7 @@ func (report *reportTransactionsUsecase) ReportTransactionListener(input entitie
 	data, er := reportTransactionRepo.GetExistingTransaction(input.ReffID, input.Dest)
 	if er != nil {
 		if er == err.NoRecord {
-			entities.PrintLog(fmt.Sprintf("Incoming new data: %s", input.ReffID))
+			entities.PrintLog(fmt.Sprintf("incoming new data: %s", input.ReffID))
 		} else {
 			return er
 		}
@@ -62,6 +62,8 @@ func (report *reportTransactionsUsecase) ReportTransactionListener(input entitie
 		}
 	} else {
 		// New transaction..
+		payVoucher.CustID = entities.EmptyStringVal
+		payVoucher.VN = entities.EmptyStringVal
 		er = reportTransactionRepo.Save(payVoucher)
 		if er != nil {
 			return er
